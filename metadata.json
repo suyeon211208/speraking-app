@@ -1,0 +1,6 @@
+{
+  "name": "말하는 레디",
+  "description": "어린이를 위한 인공지능 말하기 친구 앱 - 레디와 함께 재미있게 이야기해요",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
