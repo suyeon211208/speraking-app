@@ -53,7 +53,7 @@ const DEFAULT_STORIES: StoryRecord[] = [
 ];
 
 export default function App() {
-  const [screen, setScreen] = useState<AppScreen>('mystory');
+  const [screen, setScreen] = useState<AppScreen>('main');
   const [selectedTopic, setSelectedTopic] = useState<TopicOption | null>(null);
   const [stories, setStories] = useState<StoryRecord[]>(() => {
     try {
