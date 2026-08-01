@@ -15,6 +15,9 @@ interface TopicSelectionScreenProps {
   onSelectTopicAndStart: (topic: TopicOption) => void;
   onBackToMain?: () => void;
   onGoMyStory?: () => void;
+  onGoBadges?: () => void;
+  onGoParent?: () => void;
+  onGoMiniGame?: () => void;
 }
 
 export const TOPIC_OPTIONS: TopicOption[] = [
@@ -56,6 +59,9 @@ export const TopicSelectionScreen: React.FC<TopicSelectionScreenProps> = ({
   onSelectTopicAndStart,
   onBackToMain,
   onGoMyStory,
+  onGoBadges,
+  onGoParent,
+  onGoMiniGame,
 }) => {
   // Default selected topic is 'animal' as shown in screenshot
   const [selectedTopicId, setSelectedTopicId] = useState<string>('animal');
@@ -88,6 +94,9 @@ export const TopicSelectionScreen: React.FC<TopicSelectionScreenProps> = ({
         onClose={() => setIsMenuOpen(false)}
         onGoHome={onBackToMain}
         onGoMyStory={onGoMyStory}
+        onGoBadges={onGoBadges}
+        onGoParent={onGoParent}
+        onGoMiniGame={onGoMiniGame}
       />
 
       {/* Top Banner & Navigation Header */}

@@ -3,6 +3,9 @@ import { MainScreen } from './components/MainScreen';
 import { TopicSelectionScreen } from './components/TopicSelectionScreen';
 import { SpeakingMode } from './components/SpeakingMode';
 import { MyStoryScreen } from './components/MyStoryScreen';
+import { MyBadgesScreen } from './components/MyBadgesScreen';
+import { ParentDashboardScreen } from './components/ParentDashboardScreen';
+import { MiniGameScreen } from './components/MiniGameScreen';
 import { AppScreen, TopicOption, StoryRecord } from './types';
 
 const DEFAULT_STORIES: StoryRecord[] = [
@@ -93,6 +96,9 @@ export default function App() {
           onSelectTopicAndStart={handleSelectTopicAndStart}
           onBackToMain={() => setScreen('main')}
           onGoMyStory={() => setScreen('mystory')}
+          onGoBadges={() => setScreen('badges')}
+          onGoParent={() => setScreen('parent')}
+          onGoMiniGame={() => setScreen('minigame')}
         />
       )}
 
@@ -110,7 +116,41 @@ export default function App() {
           stories={stories}
           onBack={() => setScreen('topics')}
           onGoHome={() => setScreen('main')}
+          onGoBadges={() => setScreen('badges')}
+          onGoParent={() => setScreen('parent')}
+          onGoMiniGame={() => setScreen('minigame')}
           onStartSpeaking={() => setScreen('topics')}
+        />
+      )}
+
+      {screen === 'badges' && (
+        <MyBadgesScreen
+          onBack={() => setScreen('topics')}
+          onGoHome={() => setScreen('main')}
+          onGoMyStory={() => setScreen('mystory')}
+          onGoParent={() => setScreen('parent')}
+          onGoMiniGame={() => setScreen('minigame')}
+          onStartSpeaking={() => setScreen('topics')}
+        />
+      )}
+
+      {screen === 'parent' && (
+        <ParentDashboardScreen
+          onBack={() => setScreen('topics')}
+          onGoHome={() => setScreen('main')}
+          onGoMyStory={() => setScreen('mystory')}
+          onGoBadges={() => setScreen('badges')}
+          onGoMiniGame={() => setScreen('minigame')}
+        />
+      )}
+
+      {screen === 'minigame' && (
+        <MiniGameScreen
+          onBack={() => setScreen('topics')}
+          onGoHome={() => setScreen('main')}
+          onGoMyStory={() => setScreen('mystory')}
+          onGoBadges={() => setScreen('badges')}
+          onGoParent={() => setScreen('parent')}
         />
       )}
     </div>

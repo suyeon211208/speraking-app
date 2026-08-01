@@ -24,6 +24,9 @@ interface MyStoryScreenProps {
   stories?: StoryRecord[];
   onBack: () => void;
   onGoHome: () => void;
+  onGoBadges?: () => void;
+  onGoParent?: () => void;
+  onGoMiniGame?: () => void;
   onStartSpeaking?: () => void;
 }
 
@@ -31,6 +34,9 @@ export const MyStoryScreen: React.FC<MyStoryScreenProps> = ({
   stories = [],
   onBack,
   onGoHome,
+  onGoBadges,
+  onGoParent,
+  onGoMiniGame,
   onStartSpeaking,
 }) => {
   const [activeTab, setActiveTab] = useState<'history' | 'myCreated'>('history');
@@ -55,6 +61,9 @@ export const MyStoryScreen: React.FC<MyStoryScreenProps> = ({
         onClose={() => setIsMenuOpen(false)}
         onGoHome={onGoHome}
         onGoMyStory={() => setIsMenuOpen(false)}
+        onGoBadges={onGoBadges}
+        onGoParent={onGoParent}
+        onGoMiniGame={onGoMiniGame}
         activeItem="mystory"
       />
 

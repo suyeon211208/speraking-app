@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Home, BookOpen, Star, Megaphone, User, LogOut, Lock } from 'lucide-react';
+import { X, Home, BookOpen, Star, Megaphone, User, LogOut, Lock, Gamepad2 } from 'lucide-react';
 import { soundFx } from '../utils/soundEffects';
 import characterImage from '../assets/images/charater3.png';
 
@@ -9,7 +9,10 @@ interface HamburgerMenuProps {
   onClose: () => void;
   onGoHome?: () => void;
   onGoMyStory?: () => void;
-  activeItem?: 'home' | 'mystory' | 'badges' | 'news';
+  onGoBadges?: () => void;
+  onGoParent?: () => void;
+  onGoMiniGame?: () => void;
+  activeItem?: 'home' | 'mystory' | 'badges' | 'news' | 'parent' | 'minigame';
 }
 
 export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
@@ -17,6 +20,9 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   onClose,
   onGoHome,
   onGoMyStory,
+  onGoBadges,
+  onGoParent,
+  onGoMiniGame,
   activeItem = 'home',
 }) => {
   const handleHomeClick = () => {
@@ -32,6 +38,30 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
     onClose();
     if (onGoMyStory) {
       onGoMyStory();
+    }
+  };
+
+  const handleBadgesClick = () => {
+    soundFx.playPop();
+    onClose();
+    if (onGoBadges) {
+      onGoBadges();
+    }
+  };
+
+  const handleParentClick = () => {
+    soundFx.playPop();
+    onClose();
+    if (onGoParent) {
+      onGoParent();
+    }
+  };
+
+  const handleMiniGameClick = () => {
+    soundFx.playPop();
+    onClose();
+    if (onGoMiniGame) {
+      onGoMiniGame();
     }
   };
 
@@ -155,7 +185,7 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
 
               {/* 3. 내 배지 (My Badges) */}
               <button
-                onClick={handleItemClick}
+                onClick={handleBadgesClick}
                 className={`w-full rounded-[20px] flex items-center gap-3 cursor-pointer transition-all text-left ${
                   activeItem === 'badges'
                     ? 'bg-white p-2.5 shadow-[0_4px_14px_rgba(0,0,0,0.05)] border border-orange-100/80 hover:bg-orange-50/50 active:scale-[0.98]'
@@ -170,6 +200,27 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
                   style={{ fontFamily: "'Jua', sans-serif" }}
                 >
                   내 배지
+                </span>
+              </button>
+
+              {/* 4. 미니게임 (Mini Game) */}
+              <button
+                onClick={handleMiniGameClick}
+                className={`w-full rounded-[20px] flex items-center gap-3 cursor-pointer transition-all text-left ${
+                  activeItem === 'minigame'
+                    ? 'bg-white p-2.5 shadow-[0_4px_14px_rgba(0,0,0,0.05)] border border-orange-100/80 hover:bg-orange-50/50 active:scale-[0.98]'
+                    : 'px-3 py-2 hover:bg-white/60 active:scale-[0.98]'
+                }`}
+              >
+                <div className="w-9 h-9 rounded-full bg-[#F3E8FF] text-[#9333EA] flex items-center justify-center shrink-0">
+                  <Gamepad2 className={`w-4.5 h-4.5 ${activeItem === 'minigame' ? 'fill-[#9333EA]/20 stroke-[2.2]' : 'stroke-[2.2]'}`} />
+                </div>
+                <span
+                  className={`${activeItem === 'minigame' ? 'text-[#6E2207] text-[17px] font-bold' : 'text-[#423835] text-[16px]'} tracking-wide flex items-center gap-1.5`}
+                  style={{ fontFamily: "'Jua', sans-serif" }}
+                >
+                  <span>미니게임</span>
+                  <span className="text-[10px] text-white font-bold bg-[#A855F7] px-1.5 py-0.2 rounded-full">NEW</span>
                 </span>
               </button>
 
@@ -206,8 +257,12 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
               <div className="grid grid-cols-2 gap-2.5">
                 {/* 보호자 메뉴 */}
                 <button
-                  onClick={handleItemClick}
-                  className="bg-white rounded-[18px] p-2.5 flex flex-col items-center justify-center gap-1 shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-100/80 cursor-pointer hover:bg-slate-50 active:scale-[0.96] transition-all"
+                  onClick={handleParentClick}
+                  className={`rounded-[18px] p-2.5 flex flex-col items-center justify-center gap-1 shadow-[0_2px_10px_rgba(0,0,0,0.03)] border cursor-pointer active:scale-[0.96] transition-all ${
+                    activeItem === 'parent'
+                      ? 'bg-orange-50 border-orange-200 text-[#C2410C]'
+                      : 'bg-white border-slate-100/80 hover:bg-slate-50'
+                  }`}
                 >
                   <div className="w-8 h-8 rounded-full bg-[#FFEDD5] text-[#C2410C] flex items-center justify-center">
                     <User className="w-4 h-4 stroke-[2.2]" />
