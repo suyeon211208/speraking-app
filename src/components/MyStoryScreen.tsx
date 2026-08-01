@@ -47,7 +47,7 @@ export const MyStoryScreen: React.FC<MyStoryScreenProps> = ({
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.98 }}
-      className="relative w-full h-full min-h-screen bg-[#FFFDF5] flex flex-col justify-between overflow-y-auto"
+      className="relative w-full h-[100dvh] max-h-[100dvh] bg-[#FFFDF5] flex flex-col justify-between overflow-y-auto select-none"
     >
       {/* Hamburger Menu Drawer */}
       <HamburgerMenu

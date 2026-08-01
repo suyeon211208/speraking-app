@@ -52,7 +52,7 @@ export const CompletionScreen: React.FC<CompletionScreenProps> = ({ onNext }) =>
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3 }}
-      className="relative w-full h-screen max-h-screen flex flex-col items-center justify-between overflow-hidden bg-[#FFFDF5]"
+      className="relative w-full h-[100dvh] max-h-[100dvh] flex flex-col items-center justify-between overflow-hidden bg-[#FFFDF5] select-none"
     >
       {/* Background image */}
       <img
@@ -100,39 +100,39 @@ export const CompletionScreen: React.FC<CompletionScreenProps> = ({ onNext }) =>
       </div>
 
       {/* Top Spacer / Blank Area */}
-      <div className="w-full h-12 shrink-0" />
+      <div className="w-full h-6 sm:h-10 shrink-0" />
 
       {/* Center Content Area */}
-      <div className="relative z-20 w-full max-w-md px-6 flex flex-col items-center justify-center gap-6 my-auto">
+      <div className="relative z-20 w-full max-w-md px-5 flex flex-col items-center justify-center gap-4 sm:gap-6 my-auto min-h-0 flex-1">
         {/* Speech Card with good.png background & star-1.png placed above it */}
-        <div className="relative w-full flex flex-col items-center justify-center pt-8">
+        <div className="relative w-full max-w-[360px] sm:max-w-[420px] flex flex-col items-center justify-center pt-6 sm:pt-8 shrink-0">
           {/* Star graphic placed above/overlapping top edge of bubble */}
-          <div className="absolute -top-12 sm:-top-16 z-10 flex justify-center w-full pointer-events-none">
+          <div className="absolute -top-8 sm:-top-12 z-20 flex justify-center w-full pointer-events-none">
             <img
               src={starImg}
               alt="별"
               referrerPolicy="no-referrer"
-              className="w-36 sm:w-44 h-auto object-contain drop-shadow-md"
+              className="w-28 sm:w-36 h-auto object-contain drop-shadow-md"
             />
           </div>
 
-          <div className="relative w-full flex items-center justify-center mt-4">
+          <div className="relative w-full flex items-center justify-center mt-2">
             <img
               src={goodImg}
               alt="말풍선"
               referrerPolicy="no-referrer"
               className="w-full h-auto object-contain drop-shadow-md z-0"
             />
-            {/* Text container placed at z-30 to ensure text is aligned inside the speech bubble */}
-            <div className="absolute inset-0 z-30 flex flex-col items-center justify-center px-8 pt-3 pb-5 text-center pointer-events-none translate-y-15">
+            {/* Text container placed inside the speech bubble with downward offset */}
+            <div className="absolute inset-0 z-30 flex flex-col items-center justify-center px-6 pt-6 pb-2 text-center pointer-events-none translate-y-12 sm:translate-y-16">
               <h2
-                className="text-[#33221B] text-[22px] sm:text-[26px] font-black tracking-tight leading-tight mb-1"
+                className="text-[#33221B] text-[20px] xs:text-[22px] sm:text-[25px] font-black tracking-tight leading-tight mb-1"
                 style={{ fontFamily: "'Jua', sans-serif" }}
               >
                 {badgeText.title}
               </h2>
               <p
-                className="text-[#66554E] text-[15px] sm:text-[17px] font-semibold"
+                className="text-[#66554E] text-[14px] xs:text-[15px] sm:text-[17px] font-semibold"
                 style={{ fontFamily: "'Jua', sans-serif" }}
               >
                 {badgeText.desc}
@@ -142,7 +142,7 @@ export const CompletionScreen: React.FC<CompletionScreenProps> = ({ onNext }) =>
         </div>
 
         {/* 3 Reward Badges */}
-        <div className="flex items-center justify-center gap-2 sm:gap-4 w-full pt-2">
+        <div className="flex items-center justify-center gap-2 sm:gap-4 w-full pt-1 shrink-0">
           {/* Badge 1: bedge1.png */}
           <motion.div
             whileHover={{ scale: 1.08 }}
@@ -156,7 +156,7 @@ export const CompletionScreen: React.FC<CompletionScreenProps> = ({ onNext }) =>
               src={badge1}
               alt="멋진 이야기!"
               referrerPolicy="no-referrer"
-              className="w-24 sm:w-28 h-auto object-contain drop-shadow-md"
+              className="w-20 xs:w-22 sm:w-28 h-auto object-contain drop-shadow-md max-h-[90px] sm:max-h-[110px]"
             />
           </motion.div>
 
@@ -173,7 +173,7 @@ export const CompletionScreen: React.FC<CompletionScreenProps> = ({ onNext }) =>
               src={badge2}
               alt="용기 가득!"
               referrerPolicy="no-referrer"
-              className="w-24 sm:w-28 h-auto object-contain drop-shadow-md"
+              className="w-20 xs:w-22 sm:w-28 h-auto object-contain drop-shadow-md max-h-[90px] sm:max-h-[110px]"
             />
           </motion.div>
 
@@ -190,19 +190,19 @@ export const CompletionScreen: React.FC<CompletionScreenProps> = ({ onNext }) =>
               src={badge3}
               alt="좋은 생각!"
               referrerPolicy="no-referrer"
-              className="w-24 sm:w-28 h-auto object-contain drop-shadow-md"
+              className="w-20 xs:w-22 sm:w-28 h-auto object-contain drop-shadow-md max-h-[90px] sm:max-h-[110px]"
             />
           </motion.div>
         </div>
       </div>
 
       {/* Bottom Button Area */}
-      <div className="relative z-20 w-full max-w-md px-6 pb-12 pt-4 flex justify-center shrink-0">
+      <div className="relative z-20 w-full max-w-md px-6 pb-8 sm:pb-12 pt-2 flex justify-center shrink-0">
         <motion.button
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.96 }}
           onClick={handleButtonClick}
-          className="w-full py-4 rounded-full bg-[#FF7E5F] hover:bg-[#FF6B4A] active:bg-[#E05335] text-white text-[22px] sm:text-[24px] font-black tracking-wider shadow-[0_8px_24px_rgba(255,126,95,0.4)] border-2 border-white/40 cursor-pointer transition-all flex items-center justify-center"
+          className="w-full py-3.5 sm:py-4 rounded-full bg-[#FF7E5F] hover:bg-[#FF6B4A] active:bg-[#E05335] text-white text-[20px] sm:text-[24px] font-black tracking-wider shadow-[0_8px_24px_rgba(255,126,95,0.4)] border-2 border-white/40 cursor-pointer transition-all flex items-center justify-center"
         >
           <span style={{ fontFamily: "'Jua', sans-serif" }}>다음엔 뭐 할까?</span>
         </motion.button>

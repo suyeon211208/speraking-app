@@ -265,7 +265,7 @@ export const SpeakingMode: React.FC<SpeakingModeProps> = ({
   }
 
   return (
-    <div className="relative w-full h-screen max-h-screen flex flex-col items-center justify-between overflow-hidden bg-[#FFFDF5]">
+    <div className="relative w-full h-[100dvh] max-h-[100dvh] flex flex-col items-center justify-between overflow-hidden bg-[#FFFDF5] select-none">
       {/* Playground Background */}
       <img
         src={bgImage}
@@ -368,7 +368,7 @@ export const SpeakingMode: React.FC<SpeakingModeProps> = ({
         </div>
 
         {/* Ready Character View */}
-        <div className="relative flex-1 flex items-end justify-center w-full mt-3 mb-1 min-h-0 overflow-visible">
+        <div className="relative flex-1 flex items-center justify-center w-full my-1 min-h-0 overflow-visible">
           <motion.div
             animate={
               isSpeaking
@@ -378,7 +378,7 @@ export const SpeakingMode: React.FC<SpeakingModeProps> = ({
                 : { y: [0, -4, 0] }
             }
             transition={{ repeat: Infinity, duration: isSpeaking ? 1.2 : 3 }}
-            className="relative cursor-pointer flex items-center justify-center h-full max-h-[240px] sm:max-h-[270px]"
+            className="relative cursor-pointer flex items-center justify-center h-full max-h-[42vh] sm:max-h-[340px] min-h-[180px] w-full"
             onClick={() => {
               soundFx.playPop();
               speakReadyReply('귀쫑긋! 네 이야기를 듣고 있어! 또 말해줘! 🌟');
@@ -388,7 +388,7 @@ export const SpeakingMode: React.FC<SpeakingModeProps> = ({
               src={characterImage}
               alt="레디"
               referrerPolicy="no-referrer"
-              className="max-h-full w-auto max-w-[240px] sm:max-w-[270px] object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.12)] translate-y-1"
+              className="h-full max-h-[38vh] sm:max-h-[320px] w-auto max-w-[78vw] sm:max-w-[320px] object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.12)] translate-y-1"
             />
           </motion.div>
         </div>

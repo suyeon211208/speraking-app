@@ -73,7 +73,7 @@ export const TopicSelectionScreen: React.FC<TopicSelectionScreenProps> = ({
   };
 
   return (
-    <div className="relative w-full h-full min-h-screen flex flex-col items-center justify-between overflow-hidden bg-[#FFFDF5] select-none">
+    <div className="relative w-full h-[100dvh] max-h-[100dvh] flex flex-col items-center justify-between overflow-hidden bg-[#FFFDF5] select-none">
       {/* Background Image */}
       <img
         src={bgImage}
@@ -190,15 +190,15 @@ export const TopicSelectionScreen: React.FC<TopicSelectionScreenProps> = ({
       </div>
 
       {/* Bottom Action Area: "시작!" Button */}
-      <div className="relative z-30 w-full max-w-md px-5 pb-8 pt-2">
+      <div className="relative z-30 w-full max-w-md px-5 pb-6 sm:pb-8 pt-2 flex justify-center shrink-0">
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.96 }}
           onClick={handleStart}
-          className="w-[200px] h-[60px] ml-[57px] border-[6px] border-white border-solid rounded-[28px] bg-[#2DD4BF] hover:bg-[#14B8A6] active:bg-[#0D9488] text-white font-black text-[24px] sm:text-[26px] tracking-wider shadow-[0_10px_24px_rgba(45,212,191,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer"
+          className="w-[200px] h-[58px] border-[5px] border-white rounded-[28px] bg-[#2DD4BF] hover:bg-[#14B8A6] active:bg-[#0D9488] text-white font-black text-[22px] sm:text-[25px] tracking-wider shadow-[0_10px_24px_rgba(45,212,191,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
           <span style={{ fontFamily: "'Jua', sans-serif" }}>시작!</span>
-          <img src={starImage} alt="star" className="w-7 h-7 object-contain" referrerPolicy="no-referrer" />
+          <img src={starImage} alt="star" className="w-6 h-6 sm:w-7 sm:h-7 object-contain" referrerPolicy="no-referrer" />
         </motion.button>
       </div>
     </div>
